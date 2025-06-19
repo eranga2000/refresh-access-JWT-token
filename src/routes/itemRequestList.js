@@ -9,7 +9,7 @@ const authozizeRoles = require('../middlewares/roleMiddleware');
 router.post('/', verifyToken, authozizeRoles('user'), requestListController.createItemRequestList);
 
 // Get all request lists - accessible by manager and admin (adjust as needed)
-router.get('/', verifyToken, authozizeRoles('manager', 'admin'), requestListController.getAllItemRequestLists);
+router.get('/', verifyToken, authozizeRoles('user', 'admin'), requestListController.getAllItemRequestLists);
 
 // Get a specific request list by ID - accessible by authenticated users
 router.get('/:id', verifyToken, authozizeRoles('user'), requestListController.getItemRequestListById);

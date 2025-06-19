@@ -15,7 +15,7 @@ const createItemRequestList = async (req, res) => {
     } = req.body;
 
     const newRequestList = new ItemRequestList({
-      userId,
+      userId: req.user.id,
       reqId,
       listName,
       projectName,
