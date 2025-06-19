@@ -1,4 +1,17 @@
 const mongoose= require('mongoose');
+
+const imageSchema = new mongoose.Schema({
+  url: {
+    type: String,
+    required: true,
+  },
+  publicId: {
+    type: String,
+    required: true,
+  },
+}, { _id: false }); 
+
+
 const itemRequestSchema = new mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
@@ -42,6 +55,11 @@ const itemRequestSchema = new mongoose.Schema({
     enum: ['pending', 'approved', 'rejected'],
     default: 'pending',
   },
+ images: {
+    type: [imageSchema],
+    required: false,
+  },
+
 }, {
   timestamps: true, 
 });
